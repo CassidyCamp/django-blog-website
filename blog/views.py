@@ -46,4 +46,8 @@ class BlogsView(View):
 
 
 class BlogDetailView(View):
-    pass
+    def get(self, request: HttpRequest, slug: str) -> HttpResponse:
+        for post in posts:
+            if post['slug'] == slug:
+                return render(request, 'blog_detail.html', {'post': post})
+        return render(request, 'blog.html', {'posts': posts, 'error': f'{slug} is not found.'})

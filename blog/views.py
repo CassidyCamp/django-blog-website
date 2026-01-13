@@ -41,7 +41,8 @@ class HomeView(View):
 
 
 class BlogsView(View):
-    pass
+    def get(self, request: HttpRequest) -> HttpResponse:
+        return render(request, 'blog.html', {'posts': posts})
 
 
 class BlogDetailView(View):
